@@ -1,1 +1,112 @@
+package Main;
+
+import CANDIDATO.Candidato;
+import ELETTORE.Elettore;
+import ELETTORE.TipoElettore;
+import VOTO.Votoduplice;
+import VOTO.Votogrande;
+import VOTO.Votosemplice;
+import prog.utili.Orario;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+		// TODO Auto-generated method stub
+
+		Candidato c1 = new Candidato("Matteo Salvini");
+		Candidato c2 = new Candidato("Giorgia Meloni");
+		Candidato c3 = new Candidato("Giuseppe Conte");
+		Candidato c4 = new Candidato("Mario Draghi");
+				
+		Elettore e1 = new Elettore("Parigi", TipoElettore.PRESIDENTE);
+		Elettore e2 = new Elettore("Parigi", TipoElettore.ASSESSORE);
+		Elettore e3 = new Elettore("Parigi", TipoElettore.SEMPLICE);
+		Elettore e4 = new Elettore("Parigi", TipoElettore.GIUNTA);
+		Elettore e5 = new Elettore("Parigi", TipoElettore.SEMPLICE);
+		Elettore e6 = new Elettore("Parigi", TipoElettore.SEMPLICE);
+		Elettore e7 = new Elettore("Parigi", TipoElettore.SENATORE);
+		Elettore e8 = new Elettore("Parigi", TipoElettore.SEMPLICE);
+		Elettore e9 = new Elettore("Parigi", TipoElettore.GIUNTA);
+		Elettore e10 = new Elettore("Parigi", TipoElettore.SEMPLICE);
+		Elettore e11 = new Elettore("Parigi", TipoElettore.ASSESSORE);
+		Elettore e12 = new Elettore("Parigi", TipoElettore.SEMPLICE);
+		Elettore e13= new Elettore("Parigi", TipoElettore.PRESIDENTE);
+		
+		
+		
+
+		
+		
+		Votosemplice vs1 = new Votosemplice(e1, c1);
+		Votosemplice vs2 = new Votosemplice(e2, c2);
+		Votosemplice vs3 = new Votosemplice(e3, c3);
+		Votosemplice vs4 = new Votosemplice(e4, c2);
+		Votosemplice vs5 = new Votosemplice(e5, c4);
+		Votosemplice vs6= new Votosemplice(e6, c4);
+
+
+		
+		Votogrande vg2 = new Votogrande(e7, c3, new Orario("09:07"));
+		System.out.println(vg2.tipoele);
+		Votogrande vg1 = new Votogrande(e8, c4);
+		Votogrande vg3 = new Votogrande(e9, c1);
+		Votogrande vg4 = new Votogrande(e10, c1, new Orario("11:13"));
+		Votogrande vg5 = new Votogrande(e11, c4);
+
+		
+		
+		Votoduplice vd1= new Votoduplice(e12, c1, c2);
+		Votoduplice vd2= new Votoduplice(e13, c4, c3);
+
+		Gestorevoti gv = new Gestorevoti();
+		
+		
+		
+		//inseriamo candidati
+		gv.insertCandidato(c4);
+		gv.insertCandidato(c3);
+		gv.insertCandidato(c2);
+		gv.insertCandidato(c1);
+
+		// inseriamo voti
+	
+		gv.insertVoto(vd2);
+		gv.insertVoto(vd1);
+		gv.insertVoto(vs1);
+		gv.insertVoto(vs2);
+		gv.insertVoto(vs3);
+		gv.insertVoto(vs4);
+		gv.insertVoto(vs5);
+		gv.insertVoto(vs6);
+		gv.insertVoto(vg1);
+		gv.insertVoto(vg2);
+		gv.insertVoto(vg3);
+		gv.insertVoto(vg4);
+		gv.insertVoto(vg5);
+		
+
+		
+		//import da file
+		gv.import_da_file("voti.txt");
+		
+		//stampa per id
+		
+		gv.stampaVoti();
+		
+		//stampa per peso
+		
+		gv.stampaperpeso();
+		
+		//calcola vincitore
+		gv.calcolaVincitore();
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}
 
